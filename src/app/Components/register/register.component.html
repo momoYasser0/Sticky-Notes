@@ -1,0 +1,86 @@
+<section class="signup d-flex align-items-center vh-100">
+  <div class="container boxShadow">
+    <div class="signup-content row">
+      <div class="signup-form col-md-6">
+        <h2 class="form-title fs-2">Sign up</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="handleForm(registerForm)" class="register-form mt-4"
+          id="register-form">
+          <div class="form-group d-flex align-items-center mb-3">
+            <label for="name">
+              <span class="fa-solid fa-user"></span>
+            </label>
+            <input formControlName="name" type="text" name="name" id="name" placeholder="Your Name" />
+          </div>
+          <p class="alert-0 text-danger mb-3"
+            *ngIf="registerForm.get('name')?.errors && registerForm.get('name')?.touched">
+            <span *ngIf="registerForm.get('name')?.getError('required')">Name is required</span>
+            <span *ngIf="registerForm.get('name')?.getError('minlength')">Min length 3 characters</span>
+          </p>
+          <div class="form-group d-flex align-items-center mb-3">
+            <label for="email">
+              <span class="fa-solid fa-envelope"></span>
+            </label>
+            <input formControlName="email" type="email" name="email" id="email" placeholder="Your Email" />
+          </div>
+          <p class="alert-0 text-danger mb-3"
+            *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched">
+            <span *ngIf="registerForm.get('email')?.getError('required')">Required</span>
+            <span *ngIf="registerForm.get('email')?.getError('email')">Please enter valid email</span>
+            <span *ngIf="registerForm.get('email')?.getError('emailExist')">Email is already exist</span>
+          </p>
+          <div class="form-group d-flex align-items-center mb-3">
+            <label for="password">
+              <span class="fa-solid fa-lock"></span>
+            </label>
+            <input formControlName="password" type="password" name="password" id="password" placeholder="Password" />
+          </div>
+          <p class="alert-0 text-danger mb-3"
+            *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched">
+            <span *ngIf="registerForm.get('password')?.getError('required')">Password is required</span>
+            <span *ngIf="registerForm.get('password')?.getError('pattern')">
+              * Must start with capital letter <br>
+              * Contains more than 4 characters <br>
+            </span>
+          </p>
+          <div class="form-group d-flex align-items-center mb-3">
+            <label for="phone">
+              <span class="fa-solid fa-phone"></span>
+            </label>
+            <input formControlName="phone" type="tel" name="phone" id="phone" placeholder="Phone" />
+          </div>
+          <p class="alert-0 text-danger mb-3"
+            *ngIf="registerForm.get('phone')?.errors && registerForm.get('phone')?.touched">
+            <span *ngIf="registerForm.get('phone')?.getError('required')">Phone is required</span>
+            <span *ngIf="registerForm.get('phone')?.getError('pattern')">Please enter your Phone number</span>
+          </p>
+          <div class="form-group d-flex align-items-center mb-3">
+            <label for="age">
+              <span class="fa-solid fa-globe"></span>
+            </label>
+            <input formControlName="age" type="number" name="age" id="age" placeholder="Age" />
+          </div>
+          <p class="alert-0 text-danger mb-3"
+            *ngIf="registerForm.get('age')?.errors && registerForm.get('age')?.touched ">
+            <span *ngIf="registerForm.get('age')?.getError('required')">Required</span>
+            <span *ngIf="registerForm.get('age')?.getError('pattern')">Please enter valid age</span>
+          </p>
+          <!-- <div class="alert-0 text-danger mb-3" *ngIf="apiError">
+            {{apiError}}
+          </div> -->
+          <div class="d-flex justify-content-center align-items-center flex-column">
+            <button class="btn btn-danger" [disabled]="registerForm.invalid">
+              <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i>
+              <span *ngIf="!isLoading">Register</span>
+            </button>
+            <div class="my-3">Already Have an account?
+              <a class="text-info" routerLink="/login">Signin</a>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="signup-image col-md-6 d-flex justify-content-center">
+        <figure><img src="assets/imgs/signup-image.jpg" alt="sing up image" /></figure>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,59 @@
+.card-big-shadow {
+  max-width: 320px;
+  position: relative;
+
+  &:before {
+    background-image: url("http://static.tumblr.com/i21wc39/coTmrkw40/shadow.png");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    bottom: 0%;
+    content: "";
+    display: block;
+    left: -5%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 0;
+  }
+
+}
+
+@media screen and (max-width:992px) {
+  .card-big-shadow {
+    width: 100%;
+    position: relative;
+  }
+}
+
+.card {
+  border-radius: 8px;
+  box-shadow: 0 2px 2px rgba(204, 197, 185, 0.5);
+  background-color: #FFFFFF;
+  color: #252422;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+
+  & .description {
+    font-size: 16px;
+    color: #66615b;
+  }
+
+  &[data-color="yellow"] {
+    background: #ffe28c;
+  }
+
+  &[data-color="yellow"] .description {
+    color: #b25825;
+  }
+
+  &[data-color="yellow"] .category {
+    color: #d88715;
+  }
+}
+
+.nodata {
+  letter-spacing: 3px;
+
+}

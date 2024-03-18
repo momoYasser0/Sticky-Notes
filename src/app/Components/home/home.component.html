@@ -1,0 +1,41 @@
+<section class="notes my-5 min-vh-100 bg-white  ">
+
+  <div class="container ">
+    <ol class="list-unstyled px-3 d-flex justify-content-between">
+      <li>
+        <button [ngStyle]="{'backgroundColor':'#FC6736'}" class="text-white btn" mat-raised-button
+          (click)="openDialog()">Add</button>
+      </li>
+      <li>
+        <input type="text" class="form-control" placeholder="search" [(ngModel)]="searchValue">
+      </li>
+    </ol>
+
+
+    <div class="row justify-content-center p-3" *ngIf="allNotes.length;else noData">
+      <div *ngFor="let note of allNotes |filter:searchValue; let i = index" class="card-big-shadow col-md-3 col-lg-4">
+        <div class="card card-just-text p-2 rounded-0 " data-background="color" data-color="yellow">
+          <div class="content p-2 text-center">
+            <h4 class="title h2 fw-bold">{{note.title}}</h4>
+            <p class="description">{{note.content}}</p>
+            <div class="d-flex justify-content-evenly gap-2">
+              <button class="btn p-0" (click)="updateNote(note)">
+
+                <i class="fa-solid fa-pen-to-square text-primary cursor-pointer"></i>
+              </button>
+              <button class="btn p-0">
+                <i class="fa-solid fa-trash text-danger cursor-pointer" (click)="deleteNote(note._id,i)"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #noData>
+      <div class="min-vh-100 d-flex align-items-center justify-content-center ">
+        <h3 class="text-center border p-3 rounded w-50 fw-bold nodata fs-3">No Notes to Show</h3>
+      </div>
+    </ng-template>
+  </div>
+</section>

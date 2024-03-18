@@ -1,0 +1,22 @@
+<div mat-dialog-content>
+  <h2 class="fw-bold">Add your note</h2>
+  <form [formGroup]="noteForm" (ngSubmit)="handleUserAction(noteForm)" class="d-flex flex-column">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Content</mat-label>
+      <input matInput formControlName="content">
+    </mat-form-field>
+    <div mat-dialog-actions>
+      <button color="warn" mat-button cdkFocusInitial
+        *ngIf="!data.title && !data.content ;else updateButton">Add</button>
+      <ng-template #updateButton>
+        <button color="primary" mat-button cdkFocusInitial>Update</button>
+      </ng-template>
+    </div>
+  </form>
+</div>
+
+<!-- <h2>hiii</h2> -->
